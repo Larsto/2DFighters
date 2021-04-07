@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed, jumpForce;
 
     private float velocity;
+    //private float vertical;
 
     private bool isGrounded;
     public Transform groundCheckPoint;
@@ -17,6 +18,9 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
 
     public bool isKeyBoard2;
+
+    public float timeBetweenAttacks = .25f;
+    private float attackCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -49,11 +53,17 @@ public class PlayerController : MonoBehaviour
             {
                 theRB.velocity = new Vector2(theRB.velocity.x, theRB.velocity.y * .25f);
             }
+            if(Keyboard.current.enterKey.wasPressedThisFrame)
+            {
+                anim.SetTrigger("attack");
+                attackCounter = timeBetweenAttacks;
+            }
         }
             
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, .2f, whatIsGround);
 
         theRB.velocity = new Vector2(velocity * moveSpeed, theRB.velocity.y);
+        //theRB.velocity = new Vector2(theRB.velocity.x, vertical * moveSpeed);
 
         anim.SetBool("isGrounded", isGrounded);
         anim.SetFloat("ySpeed", theRB.velocity.y);
@@ -66,11 +76,18 @@ public class PlayerController : MonoBehaviour
         {
             transform.localScale = Vector3.one;
         }
+
+        if(attackCounter > 0)
+        {
+            attackCounter = attackCounter - Time.deltaTime;
+            theRB.velocity = new Vector2(0f, theRB.velocity.y);
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
     {
         velocity = context.ReadValue<Vector2>().x;
+        //vertical = context.ReadValue<Vector2>().y;
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -85,5 +102,14 @@ public class PlayerController : MonoBehaviour
             theRB.velocity = new Vector2(theRB.velocity.x, theRB.velocity.y * .25f);
         }
        
+    }
+
+    public void Attack(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            anim.SetTrigger("attack");
+            attackCounter = timeBetweenAttacks;
+        }
     }
 }
