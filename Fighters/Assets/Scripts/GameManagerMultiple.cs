@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GameManager : MonoBehaviour
+public class GameManagerMultiple : MonoBehaviour
 {
-    public static GameManager instance;
 
+    public static GameManagerMultiple instance;
+    /*
     public int maxPlayers;
-    //public List<PlayerController> activePlayers = new List<PlayerController>();
+    public List<PlayerController> activePlayers = new List<PlayerController>();
 
     public GameObject playerSpawnEffect;
-
+    */
     public List<GameObject> p1Players = new List<GameObject>();
     public List<GameObject> p2Players = new List<GameObject>();
     private int p1Next = 0;
@@ -65,23 +66,23 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 1; i < p1Players.Count; i++)
         {
-            p1Players[i].GetComponent<PlayerController>().selected = false;
+            p1Players[i].GetComponent<PlayerControllerMultiple>().selected = false;
         }
 
         p1CurrentPlayer = p1Players[0];
-        p1CurrentPlayer.GetComponent<PlayerController>().selected = true;
+        p1CurrentPlayer.GetComponent<PlayerControllerMultiple>().selected = true;
     }
     public void P1ChangePlayer()
     {
 
-            p1CurrentPlayer.GetComponent<PlayerController>().selected = false;
-            p1Next++;
-            if (p1Next >= p1Players.Count)
-            {
-                p1Next = 0;
-            }
-            p1CurrentPlayer = p1Players[p1Next];
-            p1CurrentPlayer.GetComponent<PlayerController>().selected = true;
+        p1CurrentPlayer.GetComponent<PlayerControllerMultiple>().selected = false;
+        p1Next++;
+        if (p1Next >= p1Players.Count)
+        {
+            p1Next = 0;
+        }
+        p1CurrentPlayer = p1Players[p1Next];
+        p1CurrentPlayer.GetComponent<PlayerControllerMultiple>().selected = true;
 
     }
     void P1RemoveFromList()
@@ -111,23 +112,23 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 1; i < p2Players.Count; i++)
         {
-            p2Players[i].GetComponent<PlayerController>().selected = false;
+            p2Players[i].GetComponent<PlayerControllerMultiple>().selected = false;
         }
 
         p2CurrentPlayer = p2Players[0];
-        p2CurrentPlayer.GetComponent<PlayerController>().selected = true;
+        p2CurrentPlayer.GetComponent<PlayerControllerMultiple>().selected = true;
     }
 
     public void P2ChangePlayer()
     {
-            p2CurrentPlayer.GetComponent<PlayerController>().selected = false;
-            p2Next++;
-            if (p2Next >= p2Players.Count)
-            {
-                p2Next = 0;
-            }
-            p2CurrentPlayer = p2Players[p2Next];
-            p2CurrentPlayer.GetComponent<PlayerController>().selected = true;
+        p2CurrentPlayer.GetComponent<PlayerControllerMultiple>().selected = false;
+        p2Next++;
+        if (p2Next >= p2Players.Count)
+        {
+            p2Next = 0;
+        }
+        p2CurrentPlayer = p2Players[p2Next];
+        p2CurrentPlayer.GetComponent<PlayerControllerMultiple>().selected = true;
     }
     void P2RemoveFromList()
     {

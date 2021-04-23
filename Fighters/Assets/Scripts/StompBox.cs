@@ -6,7 +6,8 @@ public class StompBox : MonoBehaviour
 {
     public int stompDamage;
     public float bounceForce = 12f;
-    public PlayerController thePlayer;
+    //public PlayerController thePlayer;
+    public PlayerControllerMultiple thePlayer;
     // Start is called before the first frame update
     void Start()
     {

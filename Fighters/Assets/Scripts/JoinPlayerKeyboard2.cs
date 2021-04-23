@@ -17,6 +17,7 @@ public class JoinPlayerKeyboard2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if(!hasLoadedPlayer && GameManager.instance.activePlayers.Count < GameManager.instance.maxPlayers)
         {
             if(Keyboard.current.jKey.wasPressedThisFrame || Keyboard.current.lKey.wasPressedThisFrame || Keyboard.current.rightShiftKey.wasPressedThisFrame || Keyboard.current.kKey.wasPressedThisFrame || Keyboard.current.iKey.wasPressedThisFrame)
@@ -26,5 +27,6 @@ public class JoinPlayerKeyboard2 : MonoBehaviour
                 hasLoadedPlayer = true;
             }
         }
+        */
     }
 }
