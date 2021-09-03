@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 
 public class StartGameTrigger : MonoBehaviour
@@ -35,7 +36,8 @@ public class StartGameTrigger : MonoBehaviour
 
             if(startCounter <= 0)
             {
-                SceneManager.LoadScene(levelToLoad);
+                //SceneManager.LoadScene(levelToLoad);
+                GameManager.instance.GoToNextArena();
             }
         } else
         {
