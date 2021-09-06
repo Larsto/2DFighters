@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ArenaTest1.unity
     guid: fd16dbc4e321d7f4da4d7b7711ff3d28
+  - enabled: 1
+    path: Assets/Scenes/ArenaTest2.unity
+    guid: 4f007f821d5b99e45a75a552e19ba623
+  - enabled: 1
+    path: Assets/Scenes/GameWinScreen.unity
+    guid: 5e3d1822790bcc943ac858eea5514e1d
   m_configObjects: {}

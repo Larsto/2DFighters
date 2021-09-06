@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 public class StartGameTrigger : MonoBehaviour
 {
-    public string levelToLoad;
+    //public string levelToLoad;
 
     private int playersInZone;
 
@@ -37,7 +37,9 @@ public class StartGameTrigger : MonoBehaviour
             if(startCounter <= 0)
             {
                 //SceneManager.LoadScene(levelToLoad);
-                GameManager.instance.GoToNextArena();
+                //GameManager.instance.GoToNextArena();
+
+                GameManager.instance.StartFirstRound();
             }
         } else
         {

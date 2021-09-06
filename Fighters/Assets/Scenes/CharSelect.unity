@@ -7877,7 +7877,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479f22bd30db9ff458645252e28683b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: ArenaTest1
   startCountText: {fileID: 1823497905}
   timeToStart: 3
 --- !u!1001 &23715915032482288
@@ -7892,8 +7891,16 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 23715914589037691, guid: e01e612d000be024ea64dcd494f1e2eb, type: 3}
+      propertyPath: winLevel
+      value: GameWinScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 23715914589037691, guid: e01e612d000be024ea64dcd494f1e2eb, type: 3}
       propertyPath: maxPlayers
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 23715914589037691, guid: e01e612d000be024ea64dcd494f1e2eb, type: 3}
+      propertyPath: pointsToWin
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 23715914589037691, guid: e01e612d000be024ea64dcd494f1e2eb, type: 3}
       propertyPath: allLevels.Array.size
@@ -7901,11 +7908,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 23715914589037691, guid: e01e612d000be024ea64dcd494f1e2eb, type: 3}
       propertyPath: allLevels.Array.data[0]
-      value: ArenaTest1
+      value: ArenaTest2
       objectReference: {fileID: 0}
     - target: {fileID: 23715914589037691, guid: e01e612d000be024ea64dcd494f1e2eb, type: 3}
       propertyPath: allLevels.Array.data[1]
-      value: PlayerTesting
+      value: ArenaTest1
       objectReference: {fileID: 0}
     - target: {fileID: 23715914589037692, guid: e01e612d000be024ea64dcd494f1e2eb, type: 3}
       propertyPath: m_RootOrder

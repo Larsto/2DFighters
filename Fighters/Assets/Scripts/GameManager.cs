@@ -18,6 +18,15 @@ public class GameManager : MonoBehaviour
     public string[] allLevels;
     private List<string> levelOrder = new List<string>();
 
+    [HideInInspector]
+    public int lastPlayerNumber;
+
+    public int pointsToWin;
+    private List<int> roundWins = new List<int>();
+
+    private bool gameWon;
+    public string winLevel;
+
     private void Awake()
     {
         if(instance == null)
@@ -77,6 +86,7 @@ public class GameManager : MonoBehaviour
             if (activePlayers[i].gameObject.activeInHierarchy)
             {
                 playerAliveCount++;
+                lastPlayerNumber = i;
             }
         }
 
@@ -86,7 +96,8 @@ public class GameManager : MonoBehaviour
     public void GoToNextArena()
     {
         //SceneManager.LoadScene(allLevels[Random.Range(0, allLevels.Length)]);
-
+        if(!gameWon)
+        {
         if(levelOrder.Count == 0)
         {
             List<string> allLevelList = new List<string>();
@@ -111,5 +122,41 @@ public class GameManager : MonoBehaviour
         }
 
         SceneManager.LoadScene(levelToLoad);
+        } else
+        {
+            foreach (PlayerController player in activePlayers)
+            {
+                player.gameObject.SetActive(false);
+                player.GetComponent<PlayerHealthController>().FillHealth();
+            }
+
+            SceneManager.LoadScene(winLevel);
+        }
+    }
+
+    public void StartFirstRound()
+    {
+        roundWins.Clear();
+        foreach(PlayerController player in activePlayers)
+        {
+            roundWins.Add(0);
+        }
+
+        gameWon = false;
+
+        GoToNextArena();
+    }
+
+    public void AddRoundWin()
+    {
+        if(CheckActivePlayers() == 1)
+        {
+            roundWins[lastPlayerNumber]++;
+
+            if(roundWins[lastPlayerNumber] >= pointsToWin)
+            {
+                gameWon = true;
+            }
+        }
     }
 }
