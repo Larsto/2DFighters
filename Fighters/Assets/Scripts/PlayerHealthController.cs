@@ -12,6 +12,7 @@ public class PlayerHealthController : MonoBehaviour
     public Sprite heartFull, heartEmpty;
 
     public Transform heartHolder;
+    public GameObject deathEffect;
 
     public float invincibilityTime, healthFlashTime;
     private float invincibilityCounter, flashCounter;
@@ -78,6 +79,7 @@ public class PlayerHealthController : MonoBehaviour
         if(invincibilityCounter <= 0)
         {
             currentHealth -= damageToTake;
+            AudioManager.instance.PlaySFX(5);
 
             if (currentHealth < 0)
             {
@@ -88,6 +90,8 @@ public class PlayerHealthController : MonoBehaviour
 
             if (currentHealth == 0)
             {
+                Instantiate(deathEffect, transform.position, transform.rotation);
+                AudioManager.instance.PlaySFX(4);
                 gameObject.SetActive(false);
             }
             invincibilityCounter = invincibilityTime;
@@ -102,5 +106,10 @@ public class PlayerHealthController : MonoBehaviour
         flashCounter = 0;
         invincibilityCounter = 0;
         heartHolder.gameObject.SetActive(true);
+    }
+
+    public void MakeInvincible(float invicLength)
+    {
+        invincibilityCounter = invicLength;
     }
 }

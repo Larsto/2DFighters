@@ -817,5 +817,6 @@ MonoBehaviour:
   heartFull: {fileID: 7642980859614939925, guid: adcb5fae9aa0a804c860037bd1c6ff1c, type: 3}
   heartEmpty: {fileID: -174804484191063705, guid: adcb5fae9aa0a804c860037bd1c6ff1c, type: 3}
   heartHolder: {fileID: 1080424683}
+  deathEffect: {fileID: 8540939637626742501, guid: a4948a720b8340d4ebe52d8bf5d1ce0c, type: 3}
   invincibilityTime: 1
   healthFlashTime: 0.2

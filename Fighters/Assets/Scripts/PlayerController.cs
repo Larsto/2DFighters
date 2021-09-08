@@ -22,11 +22,17 @@ public class PlayerController : MonoBehaviour
     public float timeBetweenAttacks = .25f;
     private float attackCounter;
 
+    [HideInInspector]
+    public float powerUpCounter;
+    private float speedStore, grawStore;
+
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(gameObject);
         GameManager.instance.AddPlayer(this);
+        speedStore = moveSpeed;
+        grawStore = theRB.gravityScale;
     }
 
     // Update is called once per frame
@@ -58,6 +64,7 @@ public class PlayerController : MonoBehaviour
             {
                 anim.SetTrigger("attack");
                 attackCounter = timeBetweenAttacks;
+                AudioManager.instance.PlaySFX(0);
             }
         }
             
@@ -83,6 +90,16 @@ public class PlayerController : MonoBehaviour
             attackCounter = attackCounter - Time.deltaTime;
             theRB.velocity = new Vector2(0f, theRB.velocity.y);
         }
+
+        if(powerUpCounter > 0)
+        {
+            powerUpCounter -= Time.deltaTime;
+            if(powerUpCounter <= 0)
+            {
+                moveSpeed = speedStore;
+                theRB.gravityScale = grawStore;
+            }
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -96,6 +113,7 @@ public class PlayerController : MonoBehaviour
         if (context.started && isGrounded)
         {
             theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
+            AudioManager.instance.PlaySFX(1);
         }
 
         if(!isGrounded && context.canceled && theRB.velocity.y > 0f)
@@ -111,6 +129,8 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetTrigger("attack");
             attackCounter = timeBetweenAttacks;
+
+            AudioManager.instance.PlaySFX(0);
         }
     }
 }

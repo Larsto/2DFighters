@@ -28,6 +28,11 @@ public class StartGameTrigger : MonoBehaviour
     {
         if(playersInZone > 1 && playersInZone == GameManager.instance.activePlayers.Count)
         {
+            if (!startCountText.gameObject.activeInHierarchy)
+            {
+                AudioManager.instance.PlaySFX(3);
+            }
+
             startCountText.gameObject.SetActive(true);
 
             startCounter -= Time.deltaTime;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7533151651596272534}
   - component: {fileID: 2562764528422025241}
   m_Layer: 0
-  m_Name: PortalEffect
+  m_Name: PowerUpEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,8 +221,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.007843138, g: 0.7254902, b: 0.8313726, a: 1}
-      maxColor: {r: 0.54901963, g: 0.9058824, b: 0.8000001, a: 1}
+      minColor: {r: 0.83137256, g: 0.046935227, b: 0.007843156, a: 1}
+      maxColor: {r: 1, g: 0.6076495, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 0, b: 0, a: 1}
@@ -746,7 +746,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.4
+      value: 0.25
       mode: 0
       spread: 0
       speed:

@@ -12,6 +12,10 @@ public class ArenaManager : MonoBehaviour
     public TMP_Text playerWinText;
     public GameObject winBar, roundCompleteText;
 
+    public GameObject[] pickUps;
+    public float timeBetweenPowerUps;
+    private float powerUpCounter;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +33,8 @@ public class ArenaManager : MonoBehaviour
 
         GameManager.instance.canFight = true;
         GameManager.instance.ActivatePlayers();
+
+        powerUpCounter = timeBetweenPowerUps * Random.Range(.75f, 1.25f);
     }
 
     // Update is called once per frame
@@ -40,6 +46,19 @@ public class ArenaManager : MonoBehaviour
 
             //GameManager.instance.GoToNextArena();
             StartCoroutine(EndRoundCo());
+        }
+
+        if(powerUpCounter > 0)
+        {
+            powerUpCounter -= Time.deltaTime;
+
+            if(powerUpCounter <= 0)
+            {
+                int randomPoint = Random.Range(0, spawnPoints.Count);
+                Instantiate(pickUps[Random.Range(0, pickUps.Length)], spawnPoints[randomPoint].position, spawnPoints[randomPoint].rotation);
+
+                powerUpCounter = timeBetweenPowerUps *Random.Range(.75f, 1.25f);
+            }
         }
     }
 

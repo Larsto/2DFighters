@@ -51,6 +51,8 @@ public class CharSelectButton : MonoBehaviour
 
                 popCounter = waitToPopUp;
             }
+
+            AudioManager.instance.PlaySFX(2);
         }
     }
 

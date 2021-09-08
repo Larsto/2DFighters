@@ -27,6 +27,8 @@ public class Portal : MonoBehaviour
 
             Instantiate(warpEffect, transform.position, transform.rotation);
             Instantiate(warpEffect, exitPoint.position, exitPoint.rotation);
+
+            AudioManager.instance.PlaySFX(7);
         }
     }
 }
